@@ -115,7 +115,7 @@ while True:
         break
     elif k == ord("s"):
         nome_arquivo = name + '_' + data_hora.strftime("%d_%m_%Y %H_%M_%S")
-        cv2.imwrite("./log/" + nome_arquivo + ".jpg", frame)
+        cv2.imwrite("./log_ponto/" + nome_arquivo + ".jpg", frame)
 
 cv2.destroyAllWindows()
 video_capture.release()
