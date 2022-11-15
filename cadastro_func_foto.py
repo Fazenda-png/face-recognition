@@ -15,12 +15,17 @@ while True:
 
     #Lendo a camera
     _, frame = camera.read()
+    #Mudança de cores
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
+    #Retorna um array com a posição do rosto
     objetos = faceCascade.detectMultiScale(gray, 1.2, 5 )
 
+    #Localizando os objetos e colocando borda
     for (x, y, w, h) in objetos:
+        #Função que desenha um retangulo nas coordenadas x,y,w,h
         cv.rectangle(frame, (x - 100, y - 100), (x+w + 100, y+h + 100), (0, 0, 255), 2)
+        #Recortando rosto
         crop = frame[y- 100 :y+h + 100, x - 100:x+w + 100]
 
     #Lendo a camera
@@ -39,3 +44,4 @@ while True:
         print("não deseja adcionar mais? aperte ESC")
 
 cv.destroyAllWindows()
+video_capture.release()
