@@ -51,6 +51,7 @@ for i in range(number_files):
 #Iniciando Listas
 face_locations = []
 face_encodings = []
+face_names = []
 
 process_this_frame = True
 
@@ -73,11 +74,16 @@ while True:
     #Mudança de cores
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
+    #Estabelecendo um range do frame com (COLOR_BGR2HSV) e das cores setadas
     mask = cv2.inRange(hsv, lowerBlue, upperBlue)
+    
+    #Comparação bit a bit
     result = cv2.bitwise_and(frame, frame, mask=mask)
 
     #Mudança de cores
     gray = cv2.cvtColor(result, cv2.COLOR_BGR2GRAY)
+
+    #Binarização
     _, borda = cv2.threshold(gray, 3, 255, cv2.THRESH_BINARY)
 
     #Localizando o contorno
@@ -90,7 +96,7 @@ while True:
     if process_this_frame:
         face_locations = face_recognition.face_locations(rgb_small_frame)
         face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
-        face_names = []
+
         for face_encoding in face_encodings:
 
             #Comparação entre o atual com o da imagem
@@ -107,15 +113,31 @@ while True:
                 name = faces_names[best_match_index]
             face_names.append(name)
 
+            for contorno in contornos:
+
+                area = cv2.contourArea(contorno)
+                #Condição para marcar areas com mais de 400px
+                if area > 400:
+                    (x, y, w, h) = cv2.boundingRect(contorno)
+                    #Função que desenha um retangulo nas coordenadas x,y,w,h
+                    cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 1)
+                    #Função escreve na imagem
+                    cv2.putText(
+                        frame,
+                        str("Cracha"),
+                        (x, y-20),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        1, 1
+                    )
+                    nome_arquivo = name + '_' + data_hora.strftime("%d_%m_%Y %H_%M_%S")
+                    cv2.imwrite("./log_ponto/" + nome_arquivo + ".jpg", frame)
+
 
     cv2.imshow('Ponto eletronico', frame)
     # Aperte "q" para sair
     k = cv2.waitKey(60)
     if k == 27:
         break
-    elif k == ord("s"):
-        nome_arquivo = name + '_' + data_hora.strftime("%d_%m_%Y %H_%M_%S")
-        cv2.imwrite("./log_ponto/" + nome_arquivo + ".jpg", frame)
 
 cv2.destroyAllWindows()
 video_capture.release()
