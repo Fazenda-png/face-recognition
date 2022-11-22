@@ -20,9 +20,9 @@ reconhecimento facial + seleção da cor do crachá
 ![image](https://user-images.githubusercontent.com/57419268/203354537-5038a462-5b26-4e31-ba99-5bdde6a5b3dc.png)
 
 Libs: 
-  OpenCv
-  face_recognition
-  numpy
-  os
-  glob
-  datetime
+  OpenCv, 
+  face_recognition, 
+  numpy, 
+  os, 
+  glob, 
+  datetime.
