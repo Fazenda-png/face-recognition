@@ -19,6 +19,11 @@ na pasta log_ponto com uma imagem da pessoa, o nome dela e o horario em que ela 
 # reconhecimento facial + seleção da cor do crachá
 ![image](https://user-images.githubusercontent.com/57419268/203354537-5038a462-5b26-4e31-ba99-5bdde6a5b3dc.png)
 
+# Log 
+
+![image](https://user-images.githubusercontent.com/57419268/203358356-c3e5e631-b245-490b-b60f-264c01ebf51b.png)
+
+
 Libs: 
   OpenCv, 
   face_recognition, 
