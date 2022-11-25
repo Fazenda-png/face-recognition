@@ -44,4 +44,4 @@ while True:
         print("não deseja adcionar mais? aperte ESC")
 
 cv.destroyAllWindows()
-video_capture.release()
+camera.release()
