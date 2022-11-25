@@ -23,6 +23,10 @@ na pasta log_ponto com uma imagem da pessoa, o nome dela e o horario em que ela 
 
 ![image](https://user-images.githubusercontent.com/57419268/203358356-c3e5e631-b245-490b-b60f-264c01ebf51b.png)
 
+# Video de demostração
+
+https://user-images.githubusercontent.com/57419268/203876403-c21d2e60-5702-47f9-9bad-e75c735ead11.mp4
+
 
 Libs: 
   OpenCv, 
